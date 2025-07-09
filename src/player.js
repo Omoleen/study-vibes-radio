@@ -21,9 +21,16 @@ const callbacks = {
 // Initialize the YouTube player
 export function initializePlayer(containerId = 'youtube-player') {
     return new Promise((resolve, reject) => {
-        // Check if YouTube API is loaded
+        // Check if YouTube API is loaded and ready
         if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') {
             reject(new Error('YouTube API not loaded'));
+            return;
+        }
+
+        // Wait for YT.Player to be fully ready
+        if (YT.loaded !== 1) {
+            console.log('YouTube API loaded but not ready, waiting...');
+            setTimeout(() => initializePlayer(containerId).then(resolve).catch(reject), 100);
             return;
         }
 

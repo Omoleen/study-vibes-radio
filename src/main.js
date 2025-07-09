@@ -42,27 +42,41 @@ document.addEventListener('DOMContentLoaded', async () => {
     createMoodCards();
     loadSettings();
     
-    // Wait for YouTube API to be ready
-    if (typeof YT === 'undefined') {
-        console.log('YouTube API not loaded yet, waiting...');
-        window.onYouTubeIframeAPIReady = initializeYouTubePlayer;
-        
-        // Fallback: try loading after a delay
-        setTimeout(() => {
-            if (typeof YT === 'undefined') {
-                console.error('YouTube API failed to load after timeout');
-                elements.playerLoading.innerHTML = `
-                    <p>YouTube API failed to load.</p>
-                    <p>Please check your internet connection and try refreshing.</p>
-                    <p>If using an ad blocker, try disabling it.</p>
-                `;
-            }
-        }, 10000); // 10 second timeout
-    } else {
-        console.log('YouTube API already loaded');
-        await initializeYouTubePlayer();
-    }
+    // Wait for YouTube API to be ready with better timing
+    waitForYouTubeAPI();
 });
+
+// Better YouTube API loading
+function waitForYouTubeAPI() {
+    const maxAttempts = 50; // 5 seconds max
+    let attempts = 0;
+    
+    const checkAPI = () => {
+        attempts++;
+        
+        if (typeof YT !== 'undefined' && YT.Player && YT.loaded === 1) {
+            console.log('YouTube API ready after', attempts, 'attempts');
+            initializeYouTubePlayer();
+        } else if (attempts < maxAttempts) {
+            setTimeout(checkAPI, 100);
+        } else {
+            console.error('YouTube API failed to load after', attempts, 'attempts');
+            elements.playerLoading.innerHTML = `
+                <p>YouTube API failed to load.</p>
+                <p>This might be due to:</p>
+                <ul style="text-align: left; margin: 1rem 0;">
+                    <li>Ad blockers blocking YouTube</li>
+                    <li>Network connectivity issues</li>
+                    <li>Corporate firewall restrictions</li>
+                </ul>
+                <p>Try refreshing the page or disabling ad blockers.</p>
+            `;
+        }
+    };
+    
+    // Start checking immediately
+    checkAPI();
+}
 
 // Initialize DOM element references
 function initializeElements() {
