@@ -13,7 +13,7 @@ export const VIBES = {
   classical: {
     name: 'Classical Focus',
     description: 'Timeless compositions for deep work',
-    playlistId: 'PLYppVOa3h8VqJuKzVlGN5-WZMFmVVhXKH', // Classical study music
+    playlistId: 'PL2788304DC59DBEB4', // Classical study music
     background: 'classical.mp4',
     color: '#8b5cf6', // violet
     icon: '🎼'
@@ -21,7 +21,7 @@ export const VIBES = {
   synth: {
     name: 'Synthwave',
     description: 'Retro electronic vibes',
-    playlistId: 'PLYppVOa3h8VqJuKzVlGN5-WZMFmVVhXKH', // Synthwave playlist
+    playlistId: 'PLOtNYlNIGer0jmWpFtTWqMkfP56iuZg1w', // Synthwave playlist
     background: 'synth.mp4',
     color: '#ec4899', // pink
     icon: '🌆'
@@ -29,7 +29,7 @@ export const VIBES = {
   nature: {
     name: 'Nature Sounds',
     description: 'Forest, rain, and ocean ambience',
-    playlistId: 'PLYppVOa3h8VqJuKzVlGN5-WZMFmVVhXKH', // Nature sounds
+    playlistId: 'PL1F7117E03613D657', // Nature sounds
     background: 'nature.mp4',
     color: '#10b981', // emerald
     icon: '🌿'
@@ -37,7 +37,7 @@ export const VIBES = {
   jazz: {
     name: 'Smooth Jazz',
     description: 'Mellow jazz for concentration',
-    playlistId: 'PLYppVOa3h8VqJuKzVlGN5-WZMFmVVhXKH', // Jazz playlist
+    playlistId: 'PL-Ib9oOPR7OHKLBFVkiq0F0rppCZ7YFLp', // Jazz playlist
     background: 'jazz.mp4',
     color: '#f59e0b', // amber
     icon: '🎷'

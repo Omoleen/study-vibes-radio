@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupEventListeners();
     setDynamicGreeting();
     createMoodCards();
+    initializeVolumeControls(); // Initialize volume controls
     loadSettings();
     
     // Wait for YouTube API to be ready with better timing
@@ -282,14 +283,13 @@ async function initializeYouTubePlayer() {
 function handlePlayerReady() {
     console.log('YouTube player ready');
     
-    // Set initial volume
-    const savedVolume = localStorage.getItem('vibe-volume');
-    if (savedVolume) {
-        const volume = parseInt(savedVolume);
-        Player.setVolume(volume);
-        elements.volumeSlider.value = volume;
-        updateVolumeDisplay(volume);
-    }
+    // Set initial volume from slider
+    const currentVolume = parseInt(elements.volumeSlider.value);
+    Player.setVolume(currentVolume);
+    updateVolumeDisplay(currentVolume);
+    updateMuteButton();
+    
+    console.log('Player volume set to:', currentVolume);
 }
 
 // Handle player state changes
@@ -384,6 +384,8 @@ function updateMuteButton() {
 // Handle volume slider changes
 function handleVolumeChange(event) {
     const volume = parseInt(event.target.value);
+    console.log('Volume changed to:', volume); // Debug log
+    
     if (isPlayerInitialized) {
         Player.setVolume(volume);
         updateVolumeDisplay(volume);
@@ -391,12 +393,35 @@ function handleVolumeChange(event) {
         
         // Save volume to localStorage
         localStorage.setItem('vibe-volume', volume.toString());
+    } else {
+        console.log('Player not initialized, storing volume for later');
+        // Store volume for when player is ready
+        localStorage.setItem('vibe-volume', volume.toString());
+        updateVolumeDisplay(volume);
     }
 }
 
 // Update volume display
 function updateVolumeDisplay(volume) {
     elements.volumeFill.style.width = `${volume}%`;
+    console.log('Volume display updated to:', volume + '%'); // Debug log
+}
+
+// Initialize volume controls
+function initializeVolumeControls() {
+    // Set default volume
+    const defaultVolume = 50;
+    elements.volumeSlider.value = defaultVolume;
+    updateVolumeDisplay(defaultVolume);
+    
+    // Load saved volume
+    const savedVolume = localStorage.getItem('vibe-volume');
+    if (savedVolume) {
+        const volume = parseInt(savedVolume);
+        elements.volumeSlider.value = volume;
+        updateVolumeDisplay(volume);
+        console.log('Loaded saved volume:', volume);
+    }
 }
 
 // Toggle audio-only mode
