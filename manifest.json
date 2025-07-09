@@ -1,0 +1,125 @@
+{
+  "name": "Study Vibes Radio",
+  "short_name": "Study Vibes",
+  "description": "One-click ambience for studying. Choose your mood and focus with curated playlists and animated backgrounds.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "categories": ["music", "productivity", "education"],
+  "screenshots": [
+    {
+      "src": "public/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Study Vibes Radio main interface"
+    },
+    {
+      "src": "public/screenshot-narrow.png",
+      "sizes": "640x1136",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Study Vibes Radio mobile view"
+    }
+  ],
+  "icons": [
+    {
+      "src": "public/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "public/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "public/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "public/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "public/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "public/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "public/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "public/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Lo-Fi Hip Hop",
+      "short_name": "Lo-Fi",
+      "description": "Start with chill lo-fi beats",
+      "url": "/?vibe=lofi",
+      "icons": [
+        {
+          "src": "public/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Classical Focus",
+      "short_name": "Classical",
+      "description": "Study with classical music",
+      "url": "/?vibe=classical",
+      "icons": [
+        {
+          "src": "public/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Synthwave",
+      "short_name": "Synth",
+      "description": "Retro electronic vibes",
+      "url": "/?vibe=synth",
+      "icons": [
+        {
+          "src": "public/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
+} 
